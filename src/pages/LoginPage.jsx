@@ -123,7 +123,7 @@ function Login() {
                 <Grid item xs={12}>
                   <div className="flex items-center justify-center mx-auto my-5">
                     <Button
-                      style={{ width: "25%", backgroundColor: "#1876D0" }}
+                      style={{ width: "100%", backgroundColor: "#1876D0" }}
                       type="submit"
                       variant="contained"
                       onClick={handleSubmit}
@@ -134,10 +134,12 @@ function Login() {
                 </Grid>
               </Grid>
             </form>
-            <div className="flex items-center justify-center">
+            <div className="flex justify-center items-center">
               <Typography variant="body1"> Didnt Have Account?</Typography>
               <Link to="/CreateAccount">
-                <Button>Create One</Button>
+                <Button style={{ width: "100%" }} size="small">
+                  Create One
+                </Button>
               </Link>
             </div>
           </div>

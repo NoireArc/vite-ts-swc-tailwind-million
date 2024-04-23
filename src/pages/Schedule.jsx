@@ -19,19 +19,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Schedule = () => {
-  // Create Dummy Data Start
-  //   function createData(date, time, classValue) {
-  //     return { date, time, class: classValue };
-  //   }
-
-  //   const rows = [
-  //     createData("A", "B", "C"),
-  //     createData("A", "B", "C"),
-  //     createData("A", "B", "C"),
-  //     createData("A", "B", "C"),
-  //   ];
-  // Create Dumm Data End
-
   const [scheduleData, setScheduleData] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -40,7 +27,6 @@ const Schedule = () => {
     fetchScheduleData();
   }, []);
 
-  // Get Data
   const fetchScheduleData = async () => {
     try {
       const response = await axios.get("/api/schedules");
@@ -50,7 +36,6 @@ const Schedule = () => {
     }
   };
 
-  //   Handle Delete Data
   const handleDeleteSchedule = async (index) => {
     const scheduleToDelete = scheduleData[index];
 
@@ -66,7 +51,6 @@ const Schedule = () => {
       if (result.isConfirmed) {
         try {
           await axios.delete(`/api/schedules/${scheduleToDelete.id}`);
-          // Remove the deleted schedule from the state
           setScheduleData((prevData) =>
             prevData.filter((item, idx) => idx !== index)
           );
@@ -90,25 +74,21 @@ const Schedule = () => {
 
   return (
     <div className="flex bg-gray-200 w-screen h-screen">
-      <div className="w-1/5 drop-shadow-xl">
+      <div className="w-full lg:w-1/5">
         <Sidebar />
       </div>
       <div className="flex-1 bg-gray-200">
-        <div className="mx-auto w-3/4">
-          {/* Header Start */}
-          <div className="m-4 drop">
+        <div className="mx-auto w-full lg:w-3/4">
+          <div className="m-4">
             <Card>
               <CardContent>
                 <Typography fontWeight={"Bold"}>Your Schedule</Typography>
               </CardContent>
             </Card>
           </div>
-          {/* Header End */}
-          {/* Content Start */}
           <div className="m-4">
             <Card>
               <CardContent>
-                {/* Table Start */}
                 <div className="my-5">
                   <TableContainer component={Paper}>
                     <Table>
@@ -120,19 +100,16 @@ const Schedule = () => {
                             </p>
                           </TableCell>
                           <TableCell>
-                            {" "}
                             <p className="text-white font-semibold text-center">
                               Time
                             </p>
                           </TableCell>
                           <TableCell>
-                            {" "}
                             <p className="text-white font-semibold text-center">
                               Class
                             </p>
                           </TableCell>
                           <TableCell>
-                            {" "}
                             <p className="text-white font-semibold text-center">
                               Action
                             </p>
@@ -182,11 +159,9 @@ const Schedule = () => {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                   />
                 </div>
-                {/* Table End */}
               </CardContent>
             </Card>
           </div>
-          {/* Content End */}
         </div>
       </div>
     </div>

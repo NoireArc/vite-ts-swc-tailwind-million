@@ -31,32 +31,14 @@ const Dashboard = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  //   Class Option
+  // Class Option
   const currencies = [
-    {
-      value: "10-1",
-      label: "10-1",
-    },
-    {
-      value: "10-2",
-      label: "10-2",
-    },
-    {
-      value: "11-1",
-      label: "11-1",
-    },
-    {
-      value: "11-2",
-      label: "11-2",
-    },
-    {
-      value: "12-1",
-      label: "12-1",
-    },
-    {
-      value: "12-2",
-      label: "12-2",
-    },
+    { value: "10-1", label: "10-1" },
+    { value: "10-2", label: "10-2" },
+    { value: "11-1", label: "11-1" },
+    { value: "11-2", label: "11-2" },
+    { value: "12-1", label: "12-1" },
+    { value: "12-2", label: "12-2" },
   ];
 
   const handleDateChange = (date) => {
@@ -117,13 +99,14 @@ const Dashboard = () => {
       });
     }
   };
+
   return (
-    <div className="flex bg-gray-200 w-screen h-screen">
+    <div className="flex bg-gray-200 w-screen min-h-screen">
       <div className="w-1/5 drop-shadow-xl">
         <Sidebar />
       </div>
       <div className="flex-1 bg-gray-200">
-        <div className="mx-auto w-3/4">
+        <div className="mx-auto w-full lg:w-3/4">
           {/* Header Start */}
           <div className="m-4 drop">
             <Card>
@@ -149,6 +132,7 @@ const Dashboard = () => {
                       label="Select Date"
                       value={selectedDate}
                       onChange={handleDateChange}
+                      className="w-full"
                       renderInput={(params) => (
                         <TextField {...params} fullWidth />
                       )}
@@ -165,7 +149,7 @@ const Dashboard = () => {
                     select
                     value={selectedClass}
                     variant="outlined"
-                    style={{ width: "24%" }}
+                    fullWidth
                     label="Class"
                     onChange={(event) => setSelectedClass(event.target.value)}
                   >
@@ -187,6 +171,7 @@ const Dashboard = () => {
                       label="Pick Your Time"
                       value={selectedTime}
                       onChange={handleTimeChange}
+                      className="w-full"
                       renderInput={(params) => (
                         <TextField {...params} fullWidth />
                       )}

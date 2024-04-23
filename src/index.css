@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swal2-popup {
+    z-index: 9999 !important;
+  }
