@@ -136,7 +136,7 @@ function Login() {
             </form>
             <div className="flex justify-center items-center">
               <Typography variant="body1"> Didnt Have Account?</Typography>
-              <Link to="/CreateAccount">
+              <Link to="/account/sign-in">
                 <Button style={{ width: "100%" }} size="small">
                   Create One
                 </Button>

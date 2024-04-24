@@ -30,15 +30,13 @@ const Schedule = () => {
   const fetchScheduleData = async () => {
     try {
       const response = await axios.get("/api/schedules");
-      setScheduleData(response.data);
+      setScheduleData(response.data); //Set Schedule Data from DB
     } catch (error) {
-      console.error("Error fetching schedule data:", error);
+      console.error("Error fetching schedule data:", error); //Error MSG
     }
   };
 
-  const handleDeleteSchedule = async (index) => {
-    const scheduleToDelete = scheduleData[index];
-
+  const handleDeleteSchedule = async (id, index) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -50,7 +48,7 @@ const Schedule = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`/api/schedules/${scheduleToDelete.id}`);
+          await axios.delete(`/api/schedules/${id}`);
           setScheduleData((prevData) =>
             prevData.filter((item, idx) => idx !== index)
           );
@@ -126,20 +124,22 @@ const Schedule = () => {
                             .map((item, index) => (
                               <TableRow key={index}>
                                 <TableCell align="center">
-                                  {item.date.toLocaleDateString()}
+                                  {new Date(item.date).toLocaleDateString()}
                                 </TableCell>
                                 <TableCell align="center">
-                                  {item.time.toLocaleTimeString()}
+                                  {new Date(item.date).toLocaleTimeString()}
                                 </TableCell>
                                 <TableCell align="center">
-                                  {item.class}
+                                  {item.classroom}
                                 </TableCell>
                                 <TableCell align="center">
                                   <Button
                                     variant="outlined"
                                     color="error"
                                     size="small"
-                                    onClick={() => handleDeleteSchedule(index)}
+                                    onClick={() =>
+                                      handleDeleteSchedule(item.id, index)
+                                    }
                                   >
                                     <DeleteForeverIcon />
                                   </Button>

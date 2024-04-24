@@ -81,13 +81,13 @@ const Sidebar = () => {
           <Card style={{ backgroundColor: "#F0F0F0", width: "85%" }}>
             <CardContent>
               <List>
-                <ListItem button component={Link} to="/Dashboard">
+                <ListItem button component={Link} to="/dashboard">
                   <ListItemIcon>
                     <DashboardIcon />
                   </ListItemIcon>
                   <ListItemText primary="Dashboard" />
                 </ListItem>
-                <ListItem button component={Link} to="/Schedule">
+                <ListItem button component={Link} to="/schedule">
                   <ListItemIcon>
                     <CalendarMonthIcon />
                   </ListItemIcon>
